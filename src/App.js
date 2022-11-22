@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { useState } from "react";
+import {Routes ,Route} from 'react-router-dom';
+import CreatePost from "./components/CreatePost";
+import PostList from "./components/PostList";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+function App(){
+    const [postList, setPostList] = useState([]);
+    return(
+        <div>
+        <b> TBAY Delights</b>
+        <Navbar/>
+        <Routes>
+            <Route exact path="/" element={<Home/>}/>
+            <Route exact path="/CreatePost" element={<CreatePost setPostList={setPostList}/>}/>
+            <Route exact path="/PostList" element={< PostList postList={postList}/>}/>
+        </Routes>
+            
+        </div>
+    );
 }
-
 export default App;
